@@ -7,7 +7,7 @@
 		exports["Carousal"] = factory(require("react"));
 	else
 		root["Carousal"] = factory(root["React"]);
-})(this, function(__WEBPACK_EXTERNAL_MODULE_8__) {
+})(this, function(__WEBPACK_EXTERNAL_MODULE_5__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -73,7 +73,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "/dist/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 9);
+/******/ 	return __webpack_require__(__webpack_require__.s = 6);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -271,108 +271,6 @@ process.umask = function() { return 0; };
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
-
-/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * 
- */
-
-function makeEmptyFunction(arg) {
-  return function () {
-    return arg;
-  };
-}
-
-/**
- * This function accepts and discards inputs; it has no side effects. This is
- * primarily useful idiomatically for overridable function endpoints which
- * always need to be callable, since JS lacks a null-call idiom ala Cocoa.
- */
-var emptyFunction = function emptyFunction() {};
-
-emptyFunction.thatReturns = makeEmptyFunction;
-emptyFunction.thatReturnsFalse = makeEmptyFunction(false);
-emptyFunction.thatReturnsTrue = makeEmptyFunction(true);
-emptyFunction.thatReturnsNull = makeEmptyFunction(null);
-emptyFunction.thatReturnsThis = function () {
-  return this;
-};
-emptyFunction.thatReturnsArgument = function (arg) {
-  return arg;
-};
-
-module.exports = emptyFunction;
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- */
-
-
-
-/**
- * Use invariant() to assert state which your program assumes to be true.
- *
- * Provide sprintf-style format (only %s is supported) and arguments
- * to provide information about what broke and what you were
- * expecting.
- *
- * The invariant message will be stripped in production, but the invariant
- * will remain to ensure logic does not differ in production.
- */
-
-var validateFormat = function validateFormat(format) {};
-
-if (process.env.NODE_ENV !== 'production') {
-  validateFormat = function validateFormat(format) {
-    if (format === undefined) {
-      throw new Error('invariant requires an error message argument');
-    }
-  };
-}
-
-function invariant(condition, format, a, b, c, d, e, f) {
-  validateFormat(format);
-
-  if (!condition) {
-    var error;
-    if (format === undefined) {
-      error = new Error('Minified exception occurred; use the non-minified dev environment ' + 'for the full error message and additional helpful warnings.');
-    } else {
-      var args = [a, b, c, d, e, f];
-      var argIndex = 0;
-      error = new Error(format.replace(/%s/g, function () {
-        return args[argIndex++];
-      }));
-      error.name = 'Invariant Violation';
-    }
-
-    error.framesToPop = 1; // we don't care about invariant's own frame
-    throw error;
-  }
-}
-
-module.exports = invariant;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
-
-/***/ }),
-/* 3 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -388,76 +286,7 @@ module.exports = ReactPropTypesSecret;
 
 
 /***/ }),
-/* 4 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright (c) 2014-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- */
-
-
-
-var emptyFunction = __webpack_require__(1);
-
-/**
- * Similar to invariant but only logs a warning if the condition is not met.
- * This can be used to log issues in development environments in critical
- * paths. Removing the logging code for production environments will keep the
- * same logic and follow the same code paths.
- */
-
-var warning = emptyFunction;
-
-if (process.env.NODE_ENV !== 'production') {
-  var printWarning = function printWarning(format) {
-    for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-      args[_key - 1] = arguments[_key];
-    }
-
-    var argIndex = 0;
-    var message = 'Warning: ' + format.replace(/%s/g, function () {
-      return args[argIndex++];
-    });
-    if (typeof console !== 'undefined') {
-      console.error(message);
-    }
-    try {
-      // --- Welcome to debugging React ---
-      // This error was thrown as a convenience so that you can use this stack
-      // to find the callsite that caused this warning to fire.
-      throw new Error(message);
-    } catch (x) {}
-  };
-
-  warning = function warning(condition, format) {
-    if (format === undefined) {
-      throw new Error('`warning(condition, format, ...args)` requires a warning ' + 'message argument');
-    }
-
-    if (format.indexOf('Failed Composite propType: ') === 0) {
-      return; // Ignore CompositeComponent proptype check.
-    }
-
-    if (!condition) {
-      for (var _len2 = arguments.length, args = Array(_len2 > 2 ? _len2 - 2 : 0), _key2 = 2; _key2 < _len2; _key2++) {
-        args[_key2 - 2] = arguments[_key2];
-      }
-
-      printWarning.apply(undefined, [format].concat(args));
-    }
-  };
-}
-
-module.exports = warning;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
-
-/***/ }),
-/* 5 */
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(process) {/**
@@ -482,17 +311,17 @@ if (process.env.NODE_ENV !== 'production') {
   // By explicitly using `prop-types` you are opting into new development behavior.
   // http://fb.me/prop-types-in-prod
   var throwOnDirectAccess = true;
-  module.exports = __webpack_require__(15)(isValidElement, throwOnDirectAccess);
+  module.exports = __webpack_require__(12)(isValidElement, throwOnDirectAccess);
 } else {
   // By explicitly using `prop-types` you are opting into new production behavior.
   // http://fb.me/prop-types-in-prod
-  module.exports = __webpack_require__(14)();
+  module.exports = __webpack_require__(11)();
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 6 */
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -501,6 +330,7 @@ if (process.env.NODE_ENV !== 'production') {
 var isArray = Array.isArray;
 var keyList = Object.keys;
 var hasProp = Object.prototype.hasOwnProperty;
+var hasElementType = typeof Element !== 'undefined';
 
 function equal(a, b) {
   // fast-deep-equal index.js 2.0.1
@@ -543,7 +373,12 @@ function equal(a, b) {
       if (!hasProp.call(b, keys[i])) return false;
     // end fast-deep-equal
 
-    // Custom handling for React
+    // start react-fast-compare
+    // custom handling for DOM elements
+    if (hasElementType && a instanceof Element && b instanceof Element)
+      return a === b;
+
+    // custom handling for React
     for (i = length; i-- !== 0;) {
       key = keys[i];
       if (key === '_owner' && a.$$typeof) {
@@ -557,12 +392,13 @@ function equal(a, b) {
         if (!equal(a[key], b[key])) return false;
       }
     }
+    // end react-fast-compare
 
     // fast-deep-equal index.js 2.0.1
     return true;
   }
 
-  return a!==a && b!==b;
+  return a !== a && b !== b;
 }
 // end fast-deep-equal
 
@@ -570,7 +406,7 @@ module.exports = function exportedEqual(a, b) {
   try {
     return equal(a, b);
   } catch (error) {
-    if (error.message && error.message.match(/stack|recursion/i)) {
+    if ((error.message && error.message.match(/stack|recursion/i)) || (error.number === -2146828260)) {
       // warn on circular references, don't crash
       // browsers give this different errors name and messages:
       // chrome/safari: "RangeError", "Maximum call stack size exceeded"
@@ -586,11 +422,11 @@ module.exports = function exportedEqual(a, b) {
 
 
 /***/ }),
-/* 7 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(10);
+var content = __webpack_require__(7);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -604,7 +440,7 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(16)(content, options);
+var update = __webpack_require__(13)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
@@ -636,20 +472,20 @@ if(false) {
 }
 
 /***/ }),
-/* 8 */
+/* 5 */
 /***/ (function(module, exports) {
 
-module.exports = __WEBPACK_EXTERNAL_MODULE_8__;
+module.exports = __WEBPACK_EXTERNAL_MODULE_5__;
 
 /***/ }),
-/* 9 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 exports.Carousel = undefined;
 
@@ -657,15 +493,15 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(8);
+var _react = __webpack_require__(5);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = __webpack_require__(5);
+var _propTypes = __webpack_require__(2);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-__webpack_require__(7);
+__webpack_require__(4);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -675,244 +511,250 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var isEqual = __webpack_require__(6);
+var isEqual = __webpack_require__(3);
 
 var Carousel = exports.Carousel = function (_React$Component) {
-    _inherits(Carousel, _React$Component);
+  _inherits(Carousel, _React$Component);
 
-    function Carousel(props) {
-        _classCallCheck(this, Carousel);
+  function Carousel(props) {
+    _classCallCheck(this, Carousel);
 
-        var _this = _possibleConstructorReturn(this, (Carousel.__proto__ || Object.getPrototypeOf(Carousel)).call(this, props));
+    var _this = _possibleConstructorReturn(this, (Carousel.__proto__ || Object.getPrototypeOf(Carousel)).call(this, props));
 
-        _this.state = {
-            slideTotal: 0,
-            slideCurrent: -1,
-            slides: [],
-            height: "0px"
+    _this.state = {
+      slideTotal: 0,
+      slideCurrent: _this.props.slideCurrent ? _this.props.slideCurrent : -1,
+      slides: [],
+      height: "0px"
+    };
+    return _this;
+  }
+
+  _createClass(Carousel, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      var slides = [];
+      this.props.slides.forEach(function (slide) {
+        var slideobject = {
+          class: "slider-single proactivede",
+          element: slide
         };
-        return _this;
+        slides.push(slideobject);
+      });
+      this.setState(function (prevState, props) {
+        return { slides: slides, slideTotal: _this2.props.slides.length - 1 };
+      });
+      if (this.state.slideCurrent === -1) setTimeout(function () {
+        _this2.slideRight();
+        height: document.getElementsByClassName("slider-single")[0].clientHeight;
+      }, 500);
     }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps, prevState, snapshot) {
+      var _this3 = this;
 
-    _createClass(Carousel, [{
-        key: 'componentDidMount',
-        value: function componentDidMount() {
-            var _this2 = this;
-
-            var slides = [];
-            this.props.slides.forEach(function (slide) {
-                var slideobject = {
-                    class: "slider-single proactivede",
-                    element: slide
-                };
-                slides.push(slideobject);
-            });
-            this.setState(function (prevState, props) {
-                return { slides: slides,
-                    slideTotal: _this2.props.slides.length - 1 };
-            });
-            if (this.state.slideCurrent === -1) setTimeout(function () {
-                _this2.slideRight();
-                height: document.getElementsByClassName("slider-single")[0].clientHeight;
-            }, 500);
+      if (prevProps.slides && prevProps.slides[0] && this.props.slides[0]) {
+        if (!isEqual(prevProps.slides[0], this.props.slides[0])) {
+          var slides = [];
+          this.props.slides.forEach(function (slide) {
+            var slideobject = {
+              class: "slider-single proactivede",
+              element: slide
+            };
+            slides.push(slideobject);
+          });
+          this.setState(function (prevState, props) {
+            return {
+              slides: slides,
+              slideTotal: _this3.props.slides.length - 1,
+              slideCurrent: -1
+            };
+          });
+          this.setState(function (prevState, props) {
+            return _extends({}, prevState);
+          });
+          setTimeout(function () {
+            _this3.slideRight();
+            height: document.getElementsByClassName("slider-single")[0].clientHeight;
+          }, 500);
         }
-    }, {
-        key: 'componentDidUpdate',
-        value: function componentDidUpdate(prevProps, prevState, snapshot) {
-            var _this3 = this;
+      }
+    }
+  }, {
+    key: "slideRight",
+    value: function slideRight() {
+      var _this4 = this;
 
-            if (prevProps.slides && prevProps.slides[0] && this.props.slides[0]) {
-                if (!isEqual(prevProps.slides[0], this.props.slides[0])) {
-                    var slides = [];
-                    this.props.slides.forEach(function (slide) {
-                        var slideobject = {
-                            class: "slider-single proactivede",
-                            element: slide
-                        };
-                        slides.push(slideobject);
-                    });
-                    this.setState(function (prevState, props) {
-                        return {
-                            slides: slides,
-                            slideTotal: _this3.props.slides.length - 1,
-                            slideCurrent: -1 };
-                    });
-                    this.setState(function (prevState, props) {
-                        return _extends({}, prevState);
-                    });
-                    setTimeout(function () {
-                        _this3.slideRight();
-                        height: document.getElementsByClassName("slider-single")[0].clientHeight;
-                    }, 500);
-                }
-            }
+      var _state = this.state,
+          slideCurrent = _state.slideCurrent,
+          slideTotal = _state.slideTotal;
+
+      var preactiveSlide = void 0,
+          proactiveSlide = void 0;
+      if (slideCurrent < slideTotal) {
+        slideCurrent++;
+      } else {
+        slideCurrent = 0;
+      }
+      var slide = this.state.slides;
+      if (slideCurrent > 0) {
+        preactiveSlide = slide[slideCurrent - 1];
+      } else {
+        preactiveSlide = slide[slideTotal];
+      }
+      var activeSlide = slide[slideCurrent];
+      if (slideCurrent < slideTotal) {
+        proactiveSlide = slide[slideCurrent + 1];
+      } else {
+        proactiveSlide = slide[0];
+      }
+
+      slide.forEach(function (slid, index) {
+        if (slid.class.includes("preactivede")) {
+          slid.class = "slider-single proactivede";
         }
-    }, {
-        key: 'slideRight',
-        value: function slideRight() {
-            var _this4 = this;
-
-            var _state = this.state,
-                slideCurrent = _state.slideCurrent,
-                slideTotal = _state.slideTotal;
-
-            var preactiveSlide = void 0,
-                proactiveSlide = void 0;
-            if (slideCurrent < slideTotal) {
-                slideCurrent++;
-            } else {
-                slideCurrent = 0;
-            }
-            var slide = this.state.slides;
-            if (slideCurrent > 0) {
-                preactiveSlide = slide[slideCurrent - 1];
-            } else {
-                preactiveSlide = slide[slideTotal];
-            }
-            var activeSlide = slide[slideCurrent];
-            if (slideCurrent < slideTotal) {
-                proactiveSlide = slide[slideCurrent + 1];
-            } else {
-                proactiveSlide = slide[0];
-            }
-
-            slide.forEach(function (slid, index) {
-                if (slid.class.includes("preactivede")) {
-                    slid.class = 'slider-single proactivede';
-                }
-                if (slid.class.includes("preactive")) {
-                    slid.class = 'slider-single preactivede';
-                }
-            });
-
-            preactiveSlide.class = 'slider-single preactive';
-            activeSlide.class = 'slider-single active';
-            proactiveSlide.class = 'slider-single proactive';
-            this.setState(function (prevState, props) {
-                return { slides: slide, slideCurrent: slideCurrent };
-            });
-            if (document.getElementsByClassName("slider-single active").length > 0) {
-                setTimeout(function () {
-                    var height = document.getElementsByClassName("slider-single active")[0].clientHeight;
-                    _this4.setState(function (prevState, props) {
-                        return { height: height + "px" };
-                    });
-                }, 500);
-            }
+        if (slid.class.includes("preactive")) {
+          slid.class = "slider-single preactivede";
         }
-    }, {
-        key: 'slideLeft',
-        value: function slideLeft() {
-            var _this5 = this;
+      });
 
-            var _state2 = this.state,
-                slideCurrent = _state2.slideCurrent,
-                slideTotal = _state2.slideTotal;
+      preactiveSlide.class = "slider-single preactive";
+      activeSlide.class = "slider-single active";
+      proactiveSlide.class = "slider-single proactive";
+      this.setState(function (prevState, props) {
+        return { slides: slide, slideCurrent: slideCurrent };
+      });
+      if (document.getElementsByClassName("slider-single active").length > 0) {
+        setTimeout(function () {
+          var height = document.getElementsByClassName("slider-single active")[0].clientHeight;
+          _this4.setState(function (prevState, props) {
+            return { height: height + "px" };
+          });
+        }, 500);
+      }
+    }
+  }, {
+    key: "slideLeft",
+    value: function slideLeft() {
+      var _this5 = this;
 
-            var preactiveSlide = void 0,
-                proactiveSlide = void 0;
-            var slide = this.state.slides;
-            if (slideCurrent > 0) {
-                slideCurrent--;
-            } else {
-                slideCurrent = slideTotal;
-            }
+      var _state2 = this.state,
+          slideCurrent = _state2.slideCurrent,
+          slideTotal = _state2.slideTotal;
 
-            if (slideCurrent < slideTotal) {
-                proactiveSlide = slide[slideCurrent + 1];
-            } else {
-                proactiveSlide = slide[0];
-            }
-            var activeSlide = slide[slideCurrent];
-            if (slideCurrent > 0) {
-                preactiveSlide = slide[slideCurrent - 1];
-            } else {
-                preactiveSlide = slide[slideTotal];
-            }
-            slide.forEach(function (slid, index) {
-                if (slid.class.includes("proactivede")) {
-                    slid.class = 'slider-single preactivede';
-                }
-                if (slid.class.includes("proactive")) {
-                    slid.class = 'slider-single proactivede';
-                }
-            });
-            preactiveSlide.class = 'slider-single preactive';
-            activeSlide.class = 'slider-single active';
-            proactiveSlide.class = 'slider-single proactive';
-            this.setState(function (prevState, props) {
-                return { slides: slide, slideCurrent: slideCurrent };
-            });
-            if (document.getElementsByClassName("slider-single active").length > 0) {
-                setTimeout(function () {
-                    var height = document.getElementsByClassName("slider-single active")[0].clientHeight;
-                    _this5.setState(function (prevState, props) {
-                        return { height: height + "px" };
-                    });
-                }, 500);
-            }
+      var preactiveSlide = void 0,
+          proactiveSlide = void 0;
+      var slide = this.state.slides;
+      if (slideCurrent > 0) {
+        slideCurrent--;
+      } else {
+        slideCurrent = slideTotal;
+      }
+
+      if (slideCurrent < slideTotal) {
+        proactiveSlide = slide[slideCurrent + 1];
+      } else {
+        proactiveSlide = slide[0];
+      }
+      var activeSlide = slide[slideCurrent];
+      if (slideCurrent > 0) {
+        preactiveSlide = slide[slideCurrent - 1];
+      } else {
+        preactiveSlide = slide[slideTotal];
+      }
+      slide.forEach(function (slid, index) {
+        if (slid.class.includes("proactivede")) {
+          slid.class = "slider-single preactivede";
         }
-    }, {
-        key: 'render',
-        value: function render() {
-            var _this6 = this;
+        if (slid.class.includes("proactive")) {
+          slid.class = "slider-single proactivede";
+        }
+      });
+      preactiveSlide.class = "slider-single preactive";
+      activeSlide.class = "slider-single active";
+      proactiveSlide.class = "slider-single proactive";
+      this.setState(function (prevState, props) {
+        return { slides: slide, slideCurrent: slideCurrent };
+      });
+      if (document.getElementsByClassName("slider-single active").length > 0) {
+        setTimeout(function () {
+          var height = document.getElementsByClassName("slider-single active")[0].clientHeight;
+          _this5.setState(function (prevState, props) {
+            return { height: height + "px" };
+          });
+        }, 500);
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this6 = this;
 
-            return _react2.default.createElement(
-                'div',
-                { className: 'react-3d-carousel', style: { height: this.state.height } },
-                this.state.slides && this.state.slides.length > 0 && _react2.default.createElement(
-                    'div',
-                    { className: 'slider-container' },
-                    _react2.default.createElement(
-                        'div',
-                        { className: 'slider-content' },
-                        this.state.slides.map(function (slider, index) {
-                            return _react2.default.createElement(
-                                'div',
-                                { className: slider.class, key: index },
-                                _react2.default.createElement(
-                                    'div',
-                                    { className: 'slider-left', onClick: _this6.slideLeft.bind(_this6) },
-                                    _react2.default.createElement(
-                                        'div',
-                                        null,
-                                        _react2.default.createElement('i', { className: 'fa fa-arrow-left' })
-                                    )
-                                ),
-                                _react2.default.createElement(
-                                    'div',
-                                    { className: 'slider-right', onClick: _this6.slideRight.bind(_this6) },
-                                    _react2.default.createElement(
-                                        'div',
-                                        null,
-                                        _react2.default.createElement('i', { className: 'fa fa-arrow-right' })
-                                    )
-                                ),
-                                _react2.default.createElement(
-                                    'div',
-                                    { className: 'slider-single-content' },
-                                    slider.element
-                                )
-                            );
-                        })
-                    )
+      return _react2.default.createElement(
+        "div",
+        { className: "react-3d-carousel", style: { height: this.state.height } },
+        this.state.slides && this.state.slides.length > 0 && _react2.default.createElement(
+          "div",
+          { className: "slider-container" },
+          _react2.default.createElement(
+            "div",
+            { className: "slider-content" },
+            this.state.slides.map(function (slider, index) {
+              return _react2.default.createElement(
+                "div",
+                { className: slider.class, key: index },
+                _react2.default.createElement(
+                  "div",
+                  {
+                    className: "slider-left",
+                    onClick: _this6.slideLeft.bind(_this6)
+                  },
+                  _react2.default.createElement(
+                    "div",
+                    null,
+                    _react2.default.createElement("i", { className: "fa fa-arrow-left" })
+                  )
+                ),
+                _react2.default.createElement(
+                  "div",
+                  {
+                    className: "slider-right",
+                    onClick: _this6.slideRight.bind(_this6)
+                  },
+                  _react2.default.createElement(
+                    "div",
+                    null,
+                    _react2.default.createElement("i", { className: "fa fa-arrow-right" })
+                  )
+                ),
+                _react2.default.createElement(
+                  "div",
+                  { className: "slider-single-content" },
+                  slider.element
                 )
-            );
-        }
-    }]);
+              );
+            })
+          )
+        )
+      );
+    }
+  }]);
 
-    return Carousel;
+  return Carousel;
 }(_react2.default.Component);
 
 Carousel.propTypes = {
-    slides: _propTypes2.default.arrayOf(_propTypes2.default.element)
+  slides: _propTypes2.default.arrayOf(_propTypes2.default.element)
 };
 
 /***/ }),
-/* 10 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(11)(false);
+exports = module.exports = __webpack_require__(8)(false);
 // imports
 
 
@@ -923,7 +765,7 @@ exports.push([module.i, "@keyframes heartbeat {\n  0% {\n    transform: scale(0)
 
 
 /***/ }),
-/* 11 */
+/* 8 */
 /***/ (function(module, exports) {
 
 /*
@@ -1005,7 +847,7 @@ function toComment(sourceMap) {
 
 
 /***/ }),
-/* 12 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1102,7 +944,7 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 
 
 /***/ }),
-/* 13 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1115,11 +957,24 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 
 
 
+var printWarning = function() {};
+
 if (process.env.NODE_ENV !== 'production') {
-  var invariant = __webpack_require__(2);
-  var warning = __webpack_require__(4);
-  var ReactPropTypesSecret = __webpack_require__(3);
+  var ReactPropTypesSecret = __webpack_require__(1);
   var loggedTypeFailures = {};
+
+  printWarning = function(text) {
+    var message = 'Warning: ' + text;
+    if (typeof console !== 'undefined') {
+      console.error(message);
+    }
+    try {
+      // --- Welcome to debugging React ---
+      // This error was thrown as a convenience so that you can use this stack
+      // to find the callsite that caused this warning to fire.
+      throw new Error(message);
+    } catch (x) {}
+  };
 }
 
 /**
@@ -1144,12 +999,29 @@ function checkPropTypes(typeSpecs, values, location, componentName, getStack) {
         try {
           // This is intentionally an invariant that gets caught. It's the same
           // behavior as without this statement except with a better message.
-          invariant(typeof typeSpecs[typeSpecName] === 'function', '%s: %s type `%s` is invalid; it must be a function, usually from ' + 'the `prop-types` package, but received `%s`.', componentName || 'React class', location, typeSpecName, typeof typeSpecs[typeSpecName]);
+          if (typeof typeSpecs[typeSpecName] !== 'function') {
+            var err = Error(
+              (componentName || 'React class') + ': ' + location + ' type `' + typeSpecName + '` is invalid; ' +
+              'it must be a function, usually from the `prop-types` package, but received `' + typeof typeSpecs[typeSpecName] + '`.'
+            );
+            err.name = 'Invariant Violation';
+            throw err;
+          }
           error = typeSpecs[typeSpecName](values, typeSpecName, componentName, location, null, ReactPropTypesSecret);
         } catch (ex) {
           error = ex;
         }
-        warning(!error || error instanceof Error, '%s: type specification of %s `%s` is invalid; the type checker ' + 'function must return `null` or an `Error` but returned a %s. ' + 'You may have forgotten to pass an argument to the type checker ' + 'creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and ' + 'shape all require an argument).', componentName || 'React class', location, typeSpecName, typeof error);
+        if (error && !(error instanceof Error)) {
+          printWarning(
+            (componentName || 'React class') + ': type specification of ' +
+            location + ' `' + typeSpecName + '` is invalid; the type checker ' +
+            'function must return `null` or an `Error` but returned a ' + typeof error + '. ' +
+            'You may have forgotten to pass an argument to the type checker ' +
+            'creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and ' +
+            'shape all require an argument).'
+          )
+
+        }
         if (error instanceof Error && !(error.message in loggedTypeFailures)) {
           // Only monitor this failure once because there tends to be a lot of the
           // same error.
@@ -1157,7 +1029,9 @@ function checkPropTypes(typeSpecs, values, location, componentName, getStack) {
 
           var stack = getStack ? getStack() : '';
 
-          warning(false, 'Failed %s type: %s%s', location, error.message, stack != null ? stack : '');
+          printWarning(
+            'Failed ' + location + ' type: ' + error.message + (stack != null ? stack : '')
+          );
         }
       }
     }
@@ -1169,7 +1043,7 @@ module.exports = checkPropTypes;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 14 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1182,9 +1056,9 @@ module.exports = checkPropTypes;
 
 
 
-var emptyFunction = __webpack_require__(1);
-var invariant = __webpack_require__(2);
-var ReactPropTypesSecret = __webpack_require__(3);
+var ReactPropTypesSecret = __webpack_require__(1);
+
+function emptyFunction() {}
 
 module.exports = function() {
   function shim(props, propName, componentName, location, propFullName, secret) {
@@ -1192,12 +1066,13 @@ module.exports = function() {
       // It is still safe when called from React.
       return;
     }
-    invariant(
-      false,
+    var err = new Error(
       'Calling PropTypes validators directly is not supported by the `prop-types` package. ' +
       'Use PropTypes.checkPropTypes() to call them. ' +
       'Read more at http://fb.me/use-check-prop-types'
     );
+    err.name = 'Invariant Violation';
+    throw err;
   };
   shim.isRequired = shim;
   function getShim() {
@@ -1234,7 +1109,7 @@ module.exports = function() {
 
 
 /***/ }),
-/* 15 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1247,13 +1122,31 @@ module.exports = function() {
 
 
 
-var emptyFunction = __webpack_require__(1);
-var invariant = __webpack_require__(2);
-var warning = __webpack_require__(4);
-var assign = __webpack_require__(12);
+var assign = __webpack_require__(9);
 
-var ReactPropTypesSecret = __webpack_require__(3);
-var checkPropTypes = __webpack_require__(13);
+var ReactPropTypesSecret = __webpack_require__(1);
+var checkPropTypes = __webpack_require__(10);
+
+var printWarning = function() {};
+
+if (process.env.NODE_ENV !== 'production') {
+  printWarning = function(text) {
+    var message = 'Warning: ' + text;
+    if (typeof console !== 'undefined') {
+      console.error(message);
+    }
+    try {
+      // --- Welcome to debugging React ---
+      // This error was thrown as a convenience so that you can use this stack
+      // to find the callsite that caused this warning to fire.
+      throw new Error(message);
+    } catch (x) {}
+  };
+}
+
+function emptyFunctionThatReturnsNull() {
+  return null;
+}
 
 module.exports = function(isValidElement, throwOnDirectAccess) {
   /* global Symbol */
@@ -1397,12 +1290,13 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
       if (secret !== ReactPropTypesSecret) {
         if (throwOnDirectAccess) {
           // New behavior only for users of `prop-types` package
-          invariant(
-            false,
+          var err = new Error(
             'Calling PropTypes validators directly is not supported by the `prop-types` package. ' +
             'Use `PropTypes.checkPropTypes()` to call them. ' +
             'Read more at http://fb.me/use-check-prop-types'
           );
+          err.name = 'Invariant Violation';
+          throw err;
         } else if (process.env.NODE_ENV !== 'production' && typeof console !== 'undefined') {
           // Old behavior for people using React.PropTypes
           var cacheKey = componentName + ':' + propName;
@@ -1411,15 +1305,12 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
             // Avoid spamming the console because they are often not actionable except for lib authors
             manualPropTypeWarningCount < 3
           ) {
-            warning(
-              false,
+            printWarning(
               'You are manually calling a React.PropTypes validation ' +
-              'function for the `%s` prop on `%s`. This is deprecated ' +
+              'function for the `' + propFullName + '` prop on `' + componentName  + '`. This is deprecated ' +
               'and will throw in the standalone `prop-types` package. ' +
               'You may be seeing this warning due to a third-party PropTypes ' +
-              'library. See https://fb.me/react-warning-dont-call-proptypes ' + 'for details.',
-              propFullName,
-              componentName
+              'library. See https://fb.me/react-warning-dont-call-proptypes ' + 'for details.'
             );
             manualPropTypeCallCache[cacheKey] = true;
             manualPropTypeWarningCount++;
@@ -1463,7 +1354,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
   }
 
   function createAnyTypeChecker() {
-    return createChainableTypeChecker(emptyFunction.thatReturnsNull);
+    return createChainableTypeChecker(emptyFunctionThatReturnsNull);
   }
 
   function createArrayOfTypeChecker(typeChecker) {
@@ -1513,8 +1404,8 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
 
   function createEnumTypeChecker(expectedValues) {
     if (!Array.isArray(expectedValues)) {
-      process.env.NODE_ENV !== 'production' ? warning(false, 'Invalid argument supplied to oneOf, expected an instance of array.') : void 0;
-      return emptyFunction.thatReturnsNull;
+      process.env.NODE_ENV !== 'production' ? printWarning('Invalid argument supplied to oneOf, expected an instance of array.') : void 0;
+      return emptyFunctionThatReturnsNull;
     }
 
     function validate(props, propName, componentName, location, propFullName) {
@@ -1556,21 +1447,18 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
 
   function createUnionTypeChecker(arrayOfTypeCheckers) {
     if (!Array.isArray(arrayOfTypeCheckers)) {
-      process.env.NODE_ENV !== 'production' ? warning(false, 'Invalid argument supplied to oneOfType, expected an instance of array.') : void 0;
-      return emptyFunction.thatReturnsNull;
+      process.env.NODE_ENV !== 'production' ? printWarning('Invalid argument supplied to oneOfType, expected an instance of array.') : void 0;
+      return emptyFunctionThatReturnsNull;
     }
 
     for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
       var checker = arrayOfTypeCheckers[i];
       if (typeof checker !== 'function') {
-        warning(
-          false,
+        printWarning(
           'Invalid argument supplied to oneOfType. Expected an array of check functions, but ' +
-          'received %s at index %s.',
-          getPostfixForTypeWarning(checker),
-          i
+          'received ' + getPostfixForTypeWarning(checker) + ' at index ' + i + '.'
         );
-        return emptyFunction.thatReturnsNull;
+        return emptyFunctionThatReturnsNull;
       }
     }
 
@@ -1784,7 +1672,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 16 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -1850,7 +1738,7 @@ var singleton = null;
 var	singletonCounter = 0;
 var	stylesInsertedAtTop = [];
 
-var	fixUrls = __webpack_require__(17);
+var	fixUrls = __webpack_require__(14);
 
 module.exports = function(list, options) {
 	if (typeof DEBUG !== "undefined" && DEBUG) {
@@ -2166,7 +2054,7 @@ function updateLink (link, options, obj) {
 
 
 /***/ }),
-/* 17 */
+/* 14 */
 /***/ (function(module, exports) {
 
 
