@@ -48,7 +48,7 @@ export class Carousel extends React.Component {
           return {
             slides,
             slideTotal: this.props.slides.length - 1,
-            slideCurrent: -1
+            slideCurrent: this.props.slideCurrent ? this.props.slideCurrent : -1
           };
         });
         this.setState((prevState, props) => {

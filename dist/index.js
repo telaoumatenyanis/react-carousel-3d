@@ -570,7 +570,7 @@ var Carousel = exports.Carousel = function (_React$Component) {
             return {
               slides: slides,
               slideTotal: _this3.props.slides.length - 1,
-              slideCurrent: -1
+              slideCurrent: _this3.props.slideCurrent ? _this3.props.slideCurrent : -1
             };
           });
           this.setState(function (prevState, props) {
